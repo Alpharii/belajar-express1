@@ -1,9 +1,9 @@
 import express from 'express'
 const app = express()
 const port = 3000
+import router from './routes/index.js'
 
 app.get('/', (req, res) => {
-    // res.send('hello world')
     res.json({
         nama: 'bintang',
         umur: 17
@@ -18,17 +18,8 @@ app.get('/contact', (req,res) => {
     res.send('ini page contact')
 })
 
-app.get('/barang/:id', (req, res) => {
-    const idBarang = req.params.id
-    const kategoriBarang = req.query.kategori
-    console.log(idBarang)
-    res.send(`ini page barang dengan id ${idBarang} <br/> dengan kategori ${kategoriBarang}`)
-})
 
-app.use('*', (req,res) => {
-    res.status(404)
-    res.send('404 not found')
-})
+app.use(router)
 
 app.listen(port, () => {
     console.log(`listening to port:${port}`)
