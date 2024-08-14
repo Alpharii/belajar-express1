@@ -1,23 +1,17 @@
 import express from 'express'
 const app = express()
 const port = 3000
+
 import router from './routes/index.js'
 
-app.get('/', (req, res) => {
-    res.json({
-        nama: 'bintang',
-        umur: 17
-    })
-})
+import expressEjsLayouts from 'express-ejs-layouts'
+import path from 'path'
+import url from 'url'
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
-app.get('/about', (req,res) => {
-    res.send('ini page about')
-})
-
-app.get('/contact', (req,res) => {
-    res.send('ini page contact')
-})
-
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+app.use(expressEjsLayouts)
 
 app.use(router)
 

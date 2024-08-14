@@ -1,0 +1,15 @@
+<h1>daftar barang</h1>
+<table>
+    <tr>
+        <th>no</th>
+        <th>id</th>
+        <th>nama</th>
+    </tr>
+    <% data.forEach((row, no) => { %>
+    <tr>
+        <td><%= no + 1 %></td>
+        <td><%= row.id %></td>
+        <td><%= row.nama %></td>
+    </tr>
+    <% }); %>
+</table>
